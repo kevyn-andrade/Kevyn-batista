@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevyn Batista | BCC IME-USP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #003366;
+            --secondary: #990000;
+            --accent: #0066cc;
+            --light: #f5f5f5;
+            --dark: #333333;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.1)" points="0,100 100,0 100,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .usp-logo {
+            height: 60px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .trail-section {
+            background: linear-gradient(to right, rgba(0, 102, 204, 0.05), rgba(153, 0, 0, 0.05));
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+        
+        .trail-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trail-icon {
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .trail-title {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .trail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .trail-description, .trail-motivation {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .trail-description h3, .trail-motivation h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .course-list {
+            margin-top: 2rem;
+        }
+        
+        .course-list h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 12px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #ffcc00;
+        }
+        
+        @media (max-width: 768px) {
+            .trail-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <svg class="usp-logo" viewBox="0 0 100 100" width="60" height="60">
+                    <circle cx="50" cy="50" r="45" fill="#003366"/>
+                    <text x="50" y="55" text-anchor="middle" fill="white" font-size="40" font-weight="bold">USP</text>
+                </svg>
+                <svg class="usp-logo" viewBox="0 0 100 100" width="60" height="60">
+                    <rect x="10" y="10" width="80" height="80" rx="10" fill="#990000"/>
+                    <text x="50" y="60" text-anchor="middle" fill="white" font-size="35" font-weight="bold">IME</text>
+                </svg>
+            </div>
+            <h1>Kevyn Batista de Andrade</h1>
+            <p class="subtitle">Estudante de Ciência da Computação no IME-USP</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Bem-vindo à Minha Página!</h2>
+            <p>Olá! Sou o <span class="highlight">Kevyn Batista de Andrade</span>, estudante de Bacharelado em Ciência da Computação no Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP).</p>
+            <p>Esta página apresenta minha jornada acadêmica, interesses e especialmente minha escolha pela trilha de Sistemas de Software no curso de BCC.</p>
+        </section>
+
+        <section class="section">
+            <h2>Meu Caminho no BCC</h2>
+            <p>O curso de Ciência da Computação no IME-USP oferece uma formação sólida e abrangente, preparando os estudantes para os diversos desafios da área de tecnologia. Durante os primeiros anos, adquiri conhecimentos fundamentais em:</p>
+            
+            <ul>
+                <li>Algoritmos e estruturas de dados</li>
+                <li>Matemática discreta e cálculo</li>
+                <li>Programação orientada a objetos</li>
+                <li>Arquitetura de computadores</li>
+                <li>Teoria da computação</li>
+            </ul>
+            
+            <p>Após essa base consolidada, chegou o momento de escolher minha trilha de especialização dentro do curso.</p>
+        </section>
+
+        <section class="section trail-section">
+            <div class="trail-header">
+                <div class="trail-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h2 class="trail-title">Trilha de Sistemas de Software</h2>
+            </div>
+            
+            <div class="trail-content">
+                <div class="trail-description">
+                    <h3>O que é a Trilha de Sistemas de Software?</h3>
+                    <p>A trilha de <span class="highlight">Sistemas de Software</span> concentra-se no desenvolvimento, projeto e manutenção de sistemas de software complexos, escaláveis e de alta qualidade.</p>
+                    <p>Esta especialização aborda tanto aspectos teóricos quanto práticos da construção de software, com ênfase em:</p>
+                    
+                    <ul>
+                        <li>Engenharia de software e metodologias ágeis</li>
+                        <li>Arquitetura de software e padrões de projeto</li>
+                        <li>Desenvolvimento web e mobile</li>
+                        <li>Banco de dados e sistemas de informação</li>
+                        <li>Testes automatizados e qualidade de software</li>
+                        <li>DevOps e integração contínua</li>
+                    </ul>
+                    
+                    <p>Os estudantes desta trilha aprendem a construir sistemas robustos que atendem às necessidades dos usuários e se adaptam às mudanças tecnológicas.</p>
+                </div>
+                
+                <div class="trail-motivation">
+                    <h3>Por que escolhi essa trilha?</h3>
+                    <p>Minha escolha pela trilha de Sistemas de Software foi motivada por vários fatores:</p>
+                    
+                    <ul>
+                        <li><span class="highlight">Paixão por desenvolvimento</span>: Desde meu primeiro contato com programação, sempre me fascinei pelo processo de criar soluções através de código.</li>
+                        <li><span class="highlight">Impacto tangível</span>: Sistemas de software têm o poder de transformar a maneira como pessoas e organizações funcionam no dia a dia.</li>
+                        <li><span class="highlight">Oportunidades profissionais</span>: O mercado para desenvolvedores de software continua aquecido e em constante evolução.</li>
+                        <li><span class="highlight">Desafios técnicos</span>: Construir sistemas escaláveis, seguros e eficientes representa desafios intelectuais estimulantes.</li>
+                    </ul>
+                    
+                    <p>Durante meus estudos, participei de projetos práticos que me mostraram a importância de uma boa arquitetura de software e de práticas de desenvolvimento modernas. Um projeto em particular, onde desenvolvemos um sistema de gerenciamento acadêmico, me fez perceber como o software bem projetado pode simplificar processos complexos.</p>
+                    <p>Além disso, acredito que a especialização em Sistemas de Software me dará as ferramentas necessárias para contribuir com projetos de código aberto e, eventualmente, criar minhas próprias soluções inovadoras.</p>
+                </div>
+            </div>
+            
+            <div class="course-list">
+                <h3>Algumas disciplinas desta trilha que mais me interessam:</h3>
+                <ul>
+                    <li>Engenharia de Software (MAC0466)</li>
+                    <li>Banco de Dados (MAC0439)</li>
+                    <li>Programação para Web (MAC0346)</li>
+                    <li>Programação de Software Básico (MAC0344)</li>
+                    <li>Tópicos Avançados em Programação Orientada a Objetos (MAC0447)</li>
+                    <li>Desenvolvimento de Aplicações Móveis (MAC0470)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Próximos Passos</h2>
+            <p>Meu objetivo após concluir a trilha de Sistemas de Software é trabalhar com desenvolvimento de sistemas complexos, preferencialmente em ambientes que valorizem boas práticas de engenharia de software e inovação tecnológica.</p>
+            <p>Tenho especial interesse em:</p>
+            <ul>
+                <li>Arquitetura de sistemas distribuídos</li>
+                <li>Desenvolvimento de APIs escaláveis</li>
+                <li>Cloud computing e serverless architectures</li>
+                <li>Boas práticas de DevOps</li>
+            </ul>
+            <p>Estou animado para continuar minha jornada acadêmica e profissional nesta área tão dinâmica e transformadora!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Kevyn Batista de Andrade | Bacharelado em Ciência da Computação</p>
+        <p>Instituto de Matemática e Estatística - Universidade de São Paulo</p>
+        <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" aria-label="Lattes"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+        <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2023 - Página Pessoal</p>
+    </footer>
+</body>
+                          </html>
